@@ -49,7 +49,7 @@ button{border:0;border-radius:14px;background:#ff8a00;color:#fff;font-weight:800
 <div id="finish" class="finish"><div class="box"><h2>🎉 Ai terminat Nivelul 1!</h2><p>Ai făcut 1000 de clickuri.</p><button id="again">Joacă din nou</button></div></div>
 <script>
 let clicks=Number(localStorage.getItem('clicker-level1')||0);
-let rageUsed=localStorage.getItem('clicker-level1-rage-used')==='1';
+let lastRageAt=Number(localStorage.getItem('clicker-level1-last-rage')||0);
 let rageActive=false;
 let secs=0;
 let rageTimer=null;
@@ -102,7 +102,7 @@ photo.addEventListener('click',e=>{
   clicks+=amount;
   localStorage.setItem('clicker-level1',String(clicks));
   draw();
-  if(!rageUsed && clicks>=100) startRage();
+  const milestone=Math.floor(clicks/100)*100;\n  if(!rageActive && milestone>=100 && milestone>lastRageAt) startRage(milestone);
 
   photo.classList.add('pressed');
   setTimeout(()=>photo.classList.remove('pressed'),80);
