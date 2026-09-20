@@ -18,7 +18,7 @@
 .reward-note{margin:12px 0 18px;color:#a26000;font-weight:800;line-height:1.5}
 @media(max-height:600px){body{align-items:flex-start}.photo-button{height:48svh;min-height:140px}h1{font-size:25px}.status{height:34px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.plus{opacity:1}}
-</style>
+.parkside-equipped{display:flex;align-items:center;justify-content:center;gap:8px;margin:8px auto 2px;padding:7px 12px;width:max-content;max-width:100%;border-radius:14px;background:#e9f5e8;border:1px solid #bdd8bc;font-size:12px;font-weight:900}.parkside-equipped img{width:44px;height:32px;object-fit:contain;border-radius:7px;background:#171717}.parkside-equipped[hidden]{display:none}</style>
 </head>
 <body data-level="1">
 <div id="rageBackdrop" aria-hidden="true"></div>
@@ -36,7 +36,7 @@
 <img id="ragePhoto" src="rage-blue-v6.webp" width="320" height="671" alt="Poza cu bluza albastră — RAGE Nivelul 1 și Nivelul 2" draggable="false" loading="eager" fetchpriority="high">
 </button></div>
 <p id="imageError" class="error" hidden>Pozele nu s-au încărcat. Apasă „Reîncarcă”.</p><button id="reload" class="action" hidden>Reîncarcă</button>
-<p class="hint">🏆 +1 trofeu pentru fiecare nivel terminat</p><p id="totalText" class="version">Nivelul 1: 0 → 1000</p><p class="version">V11 · 4 niveluri · SHOP · FUNDALURI</p>
+<div id="parksideEquipped" class="parkside-equipped" hidden><img src="shop-parkside-v10.webp" alt="Adidași Parkside"><span>👟 Parkside echipați · CLICK x2</span></div><p class="hint">🏆 +1 trofeu pentru fiecare nivel terminat</p><p id="totalText" class="version">Nivelul 1: 0 → 1000</p><p class="version">V12 · Parkside CLICK x2 · 4 niveluri · SHOP</p>
 </main>
 <div id="levelToast" class="toast" role="status" aria-live="polite"></div>
 <div id="finish" class="finish" role="dialog" aria-modal="true" aria-labelledby="finishTitle" hidden><div class="box"><h2 id="finishTitle">🎉 Bravo!</h2><p>Ai ajuns la 50000 și ai terminat toate cele 4 niveluri!</p><p id="rewardNotice" class="reward-note">🏆 +1 trofeu pentru Nivelul 4</p><button id="again" class="action">Joacă din nou de la Nivelul 1</button></div></div>
