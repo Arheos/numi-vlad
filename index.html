@@ -77,8 +77,10 @@ function nextMilestone() {
 function statusDraw() {
   if (rageActive) {
     status.innerHTML = '🔥 MOD NERVOS x2 <span class="timer">' + secs + 's</span>';
-  } else {
+  } else if (nextMilestone() <= max) {
     status.textContent = 'Următorul MOD NERVOS la ' + nextMilestone() + ' clickuri';
+  } else {
+    status.textContent = '';
   }
 }
 
@@ -92,16 +94,19 @@ function stopRage() {
 
 function startRage(milestone) {
   if (rageActive) return;
+
   lastRageAt = milestone;
   localStorage.setItem('clicker-level1-last-rage', String(lastRageAt));
+
   rageActive = true;
   secs = 10;
   document.body.classList.add('rage');
   photo.src = rageImg;
   statusDraw();
 
+  clearInterval(rageTimer);
   rageTimer = setInterval(() => {
-    secs--;
+    secs -= 1;
     statusDraw();
     if (secs <= 0) stopRage();
   }, 1000);
@@ -113,13 +118,24 @@ statusDraw();
 photo.addEventListener('click', (e) => {
   if (clicks >= max) return;
 
+  const before = clicks;
   const amount = rageActive ? 2 : 1;
-  clicks += amount;
+  clicks = Math.min(max, clicks + amount);
+
   localStorage.setItem('clicker-level1', String(clicks));
   draw();
 
-  if (!rageActive && clicks >= nextMilestone() && nextMilestone() <= max) {
-    startRage(nextMilestone());
+  if (!rageActive) {
+    const target = nextMilestone();
+    if (target <= max && before < target && clicks >= target) {
+      startRage(target);
+    }
+  } else {
+    const pending = nextMilestone();
+    if (pending <= max && clicks >= pending) {
+      // pragul următor rămâne în așteptare;
+      // după ce se termină rage-ul, următorul click îl poate activa.
+    }
   }
 
   photo.classList.add('pressed');
@@ -127,7 +143,7 @@ photo.addEventListener('click', (e) => {
 
   const p = document.createElement('div');
   p.className = 'plus';
-  p.textContent = '+' + (rageActive ? 2 : 1);
+  p.textContent = '+' + amount;
   p.style.left = e.clientX + 'px';
   p.style.top = e.clientY + 'px';
   document.body.appendChild(p);
@@ -139,11 +155,18 @@ photo.addEventListener('click', (e) => {
 document.getElementById('again').onclick = () => {
   clicks = 0;
   lastRageAt = 0;
+  rageActive = false;
+  secs = 0;
+  clearInterval(rageTimer);
+
   localStorage.setItem('clicker-level1', '0');
   localStorage.setItem('clicker-level1-last-rage', '0');
   localStorage.removeItem('clicker-level1-rage-used');
-  stopRage();
+
+  document.body.classList.remove('rage');
+  photo.src = normalImg;
   finish.classList.remove('show');
+
   draw();
   statusDraw();
 };
