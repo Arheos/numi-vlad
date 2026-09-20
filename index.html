@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
 <meta name="robots" content="noindex,nofollow">
-<title>Clicker V4 — Nivelul 2</title>
+<title>Clicker V5 — Nivelul 2: 1000–5000</title>
 <style>
 *{box-sizing:border-box}html{background:#fff}body{margin:0;min-height:100vh;min-height:100svh;padding:max(18px,env(safe-area-inset-top)) 18px max(18px,env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;color:#151515;background:#fff;overscroll-behavior-y:none;-webkit-user-select:none;user-select:none;touch-action:manipulation;transition:color .45s ease}button{font:inherit;touch-action:manipulation;-webkit-tap-highlight-color:transparent;cursor:pointer}button:focus-visible{outline:3px solid #f80;outline-offset:5px}
 #rageBackdrop{position:fixed;inset:0;pointer-events:none;opacity:0;transition:opacity .45s ease;background:radial-gradient(ellipse at 50% 35%,#ff6740 0%,#e71919 38%,#870614 76%,#30030c 100%);z-index:0;overflow:hidden}#rageBackdrop:after{content:"";position:absolute;inset:-40%;background:repeating-conic-gradient(from 10deg at 50% 50%,transparent 0deg 20deg,rgba(255,150,70,.1) 20deg 24deg,transparent 24deg 40deg);animation:energy 18s linear infinite;animation-play-state:paused}.rage #rageBackdrop{opacity:1}.rage #rageBackdrop:after{animation-play-state:running}@keyframes energy{to{transform:rotate(360deg)}}
@@ -22,7 +22,7 @@
 <div id="rageBackdrop" aria-hidden="true"></div>
 <main class="game">
 <h1 id="levelTitle">Nivelul 1</h1>
-<p class="score">Clickuri: <span id="score">0</span> / 1000</p>
+<p class="score">Clickuri: <span id="score">0</span> / <span id="target">1000</span></p>
 <p id="powerText" class="power">Normal +1 · RAGE +2</p>
 <div class="progress" role="progressbar" aria-label="Progres nivel" aria-valuemin="0" aria-valuemax="1000" aria-valuenow="0"><div id="bar" class="bar"></div></div>
 <div class="status"><span id="statusText">Se încarcă pozele…</span><span id="timer" class="timer" hidden>5s</span></div>
@@ -32,10 +32,10 @@
 <img id="ragePhoto" src="rage-v3.webp" width="320" height="671" alt="Poza cu bluza albastră — RAGE" draggable="false" loading="eager">
 </button></div>
 <p id="imageError" class="error" hidden>Pozele nu s-au încărcat. Apasă „Reîncarcă”.</p><button id="reload" class="action" hidden>Reîncarcă</button>
-<p class="hint">Apasă pe poză 👆</p><p id="totalText" class="version">Total: 0</p><p class="version">V4 · 2 niveluri · RAGE 5 secunde</p>
+<p class="hint">Apasă pe poză 👆</p><p id="totalText" class="version">Nivelul 1: 0 → 1000</p><p class="version">V5 · Nivelul 2: 1000–5000 · RAGE 5 secunde</p>
 </main>
 <div id="levelToast" class="toast" role="status" aria-live="polite"></div>
-<div id="finish" class="finish" role="dialog" aria-modal="true" aria-labelledby="finishTitle" hidden><div class="box"><h2 id="finishTitle">🎉 Bravo!</h2><p>Ai terminat ambele niveluri!</p><button id="again" class="action">Joacă din nou de la Nivelul 1</button></div></div>
-<script src="game-v4.js" defer></script>
+<div id="finish" class="finish" role="dialog" aria-modal="true" aria-labelledby="finishTitle" hidden><div class="box"><h2 id="finishTitle">🎉 Bravo!</h2><p>Ai ajuns la 5000 și ai terminat ambele niveluri!</p><button id="again" class="action">Joacă din nou de la Nivelul 1</button></div></div>
+<script src="game-v5.js" defer></script>
 </body>
 </html>
